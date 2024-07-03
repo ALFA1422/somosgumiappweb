@@ -6,7 +6,7 @@ import { ProductModule } from './product/product.module';
 
 @Module({
   imports: [
-    MongooseModule.forRoot('mongodb://localhost:27017/gumiapp'),
+    MongooseModule.forRoot('mongodb+srv://Dani:Herramientas95@somosgumiapp.nzpsrng.mongodb.net/?retryWrites=true&w=majority&appName=somosgumiapp'),
     ProductModule,
   ],
   controllers: [AppController],

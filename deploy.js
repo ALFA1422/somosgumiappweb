@@ -26,9 +26,9 @@ async function deploy() {
         console.log('Building Angular project...');
         await runCommand('ng build --configuration production --output-path dist --base-href /', clientDir);
 
-        // Copiar los archivos generados a la raíz del proyecto
+        // Copiar los archivos generados a la carpeta de dist en la raíz del proyecto
         console.log('Copying generated files...');
-        await runCommand('xcopy client\\dist\\* .\\ /E /H /C /I /Y');
+        await runCommand('xcopy client\\dist .\\dist /E /H /C /I /Y');
 
         // Hacer commit y push de los cambios
         console.log('Adding changes to git...');

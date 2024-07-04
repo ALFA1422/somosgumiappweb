@@ -22,6 +22,14 @@ function runCommand(command, cwd = __dirname) {
 
 async function deploy() {
     try {
+        // Asegúrate de estar en la rama main
+        console.log('Checking out to main branch...');
+        await runCommand('git checkout main');
+
+        // Pull the latest changes from GitHub
+        console.log('Pulling latest changes from GitHub...');
+        await runCommand('git pull --rebase origin main');
+
         // Construir el proyecto Angular
         console.log('Building Angular project...');
         await runCommand('ng build --configuration production --output-path dist --base-href /', clientDir);
@@ -30,13 +38,15 @@ async function deploy() {
         console.log('Copying generated files...');
         await runCommand('xcopy client\\dist\\* .\\dist /E /H /C /I /Y');
 
+        // Ver el estado de git para depuración
+        console.log('Checking git status...');
+        await runCommand('git status');
+
         // Hacer commit y push de los cambios
         console.log('Adding changes to git...');
         await runCommand('git add .');
         console.log('Committing changes...');
         await runCommand('git commit -m "Update app content"');
-        console.log('Pulling latest changes from GitHub...');
-        await runCommand('git pull --rebase');
         console.log('Pushing to GitHub...');
         await runCommand('git push origin main');
 

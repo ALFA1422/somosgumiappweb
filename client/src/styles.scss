@@ -1,4 +1,14 @@
-/* You can add global styles to this file, and also import other style files */
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+/* Import Tailwind CSS */
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+/* Import FontAwesome */
+@import "~@fortawesome/fontawesome-free/css/all.css";
+
+/* Import AOS (Animate On Scroll) */
+@import "~aos/dist/aos.css";
+
+/* Aplicar estilos globales */
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
